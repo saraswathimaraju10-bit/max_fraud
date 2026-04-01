@@ -9,6 +9,13 @@ app = Flask(__name__)
 # Enable CORS so the React app on 5173 can talk to 5000
 CORS(app)
 
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({
+        "status": "online",
+        "message": "Sentinel API is running. Use /predict or /metrics endpoints."
+    }), 200
+
 # ============================================================================
 # LOAD MODEL & PREPROCESSORS
 # ============================================================================
